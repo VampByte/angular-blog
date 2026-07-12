@@ -41,6 +41,7 @@ export class BlogComponent {
 
 	/**
 	 * Comprueba si el campo es válido.
+	 * Se llama esta funcion en cada input del formulario.
 	 * @param valor El valor del campo.
 	 * @returns Si el campo es válido.
 	 */

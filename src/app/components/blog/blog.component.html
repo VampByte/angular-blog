@@ -17,9 +17,7 @@
 						</label>
 						<input id="titulo" name="titulo" type="text" placeholder="Escribe un título..."
 							[ngModel]="titulo()" (ngModelChange)="titulo.set($event)"
-							class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 transition"
-							[class.border-slate-300]="!mostrarError(titulo())"
-							[class.focus:ring-blue-400]="!mostrarError(titulo())"
+							class="w-full px-4 py-2 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400 transition bg-white"
 							[class.border-red-500]="mostrarError(titulo())"
 							[class.focus:ring-red-400]="mostrarError(titulo())"
 							[class.bg-red-50]="mostrarError(titulo())" />
@@ -32,9 +30,7 @@
 						</label>
 						<input id="imagen" name="imagen" type="url" placeholder="https://..." [ngModel]="imagen()"
 							(ngModelChange)="imagen.set($event)"
-							class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 transition"
-							[class.border-slate-300]="!mostrarError(imagen())"
-							[class.focus:ring-blue-400]="!mostrarError(imagen())"
+							class="w-full px-4 py-2 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400 transition bg-white"
 							[class.border-red-500]="mostrarError(imagen())"
 							[class.focus:ring-red-400]="mostrarError(imagen())"
 							[class.bg-red-50]="mostrarError(imagen())" />
@@ -47,9 +43,7 @@
 						</label>
 						<textarea id="texto" name="texto" rows="4" placeholder="Escribe el contenido..."
 							[ngModel]="texto()" (ngModelChange)="texto.set($event)"
-							class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 transition resize-none"
-							[class.border-slate-300]="!mostrarError(texto())"
-							[class.focus:ring-blue-400]="!mostrarError(texto())"
+							class="w-full px-4 py-2 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400 transition resize-none bg-white"
 							[class.border-red-500]="mostrarError(texto())"
 							[class.focus:ring-red-400]="mostrarError(texto())"
 							[class.bg-red-50]="mostrarError(texto())"></textarea>
@@ -62,9 +56,7 @@
 						</label>
 						<input id="fecha" name="fecha" type="date" [ngModel]="fecha()"
 							(ngModelChange)="fecha.set($event)"
-							class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 transition"
-							[class.border-slate-300]="!mostrarError(fecha())"
-							[class.focus:ring-blue-400]="!mostrarError(fecha())"
+							class="w-full px-4 py-2 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400 transition bg-white"
 							[class.border-red-500]="mostrarError(fecha())"
 							[class.focus:ring-red-400]="mostrarError(fecha())"
 							[class.bg-red-50]="mostrarError(fecha())" />
