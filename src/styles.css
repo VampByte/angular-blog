@@ -1,3 +1,5 @@
-/* You can add global styles to this file, and also import other style files */
-
 @import 'tailwindcss';
+
+@utility form-label {
+  @apply block text-sm font-medium text-slate-700 mb-1;
+}

@@ -1,0 +1,117 @@
+<section class="min-h-screen bg-slate-50 py-10 px-4">
+	<div class="max-w-6xl mx-auto">
+		<header class="mb-10 text-center">
+			<h1 class="text-4xl font-bold text-slate-800">Sistema de Blogging</h1>
+			<p class="mt-2 text-slate-500">Publica una noticia y aparecerá al instante en el listado.</p>
+		</header>
+
+		<div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+			<!-- ÁREA 1: FORMULARIO -->
+			<section class="bg-white rounded-2xl shadow-md p-6 h-fit">
+				<h2 class="text-2xl font-semibold text-slate-700 mb-6 border-b pb-3">Nueva publicación</h2>
+
+				<form (ngSubmit)="guardarNoticia()" novalidate>
+					<div class="mb-4">
+						<label for="titulo" class="form-label">
+							Título
+						</label>
+						<input id="titulo" name="titulo" type="text" placeholder="Escribe un título..."
+							[ngModel]="titulo()" (ngModelChange)="titulo.set($event)"
+							class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 transition"
+							[class.border-slate-300]="!mostrarError(titulo())"
+							[class.focus:ring-blue-400]="!mostrarError(titulo())"
+							[class.border-red-500]="mostrarError(titulo())"
+							[class.focus:ring-red-400]="mostrarError(titulo())"
+							[class.bg-red-50]="mostrarError(titulo())" />
+							<app-mensaje-error [mensaje]="'El título es obligatorio.'" [mostrar]="mostrarError(titulo())" />
+					</div>
+
+					<div class="mb-4">
+						<label for="imagen" class="form-label">
+							URL de la imagen
+						</label>
+						<input id="imagen" name="imagen" type="url" placeholder="https://..." [ngModel]="imagen()"
+							(ngModelChange)="imagen.set($event)"
+							class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 transition"
+							[class.border-slate-300]="!mostrarError(imagen())"
+							[class.focus:ring-blue-400]="!mostrarError(imagen())"
+							[class.border-red-500]="mostrarError(imagen())"
+							[class.focus:ring-red-400]="mostrarError(imagen())"
+							[class.bg-red-50]="mostrarError(imagen())" />
+							<app-mensaje-error [mensaje]="'La URL de la imagen es obligatoria.'" [mostrar]="mostrarError(imagen())" />
+					</div>
+
+					<div class="mb-4">
+						<label for="texto" class="form-label">
+							Cuerpo de la noticia
+						</label>
+						<textarea id="texto" name="texto" rows="4" placeholder="Escribe el contenido..."
+							[ngModel]="texto()" (ngModelChange)="texto.set($event)"
+							class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 transition resize-none"
+							[class.border-slate-300]="!mostrarError(texto())"
+							[class.focus:ring-blue-400]="!mostrarError(texto())"
+							[class.border-red-500]="mostrarError(texto())"
+							[class.focus:ring-red-400]="mostrarError(texto())"
+							[class.bg-red-50]="mostrarError(texto())"></textarea>
+							<app-mensaje-error [mensaje]="'El cuerpo de la noticia es obligatorio.'" [mostrar]="mostrarError(texto())" />
+					</div>
+
+					<div class="mb-6">
+						<label for="fecha" class="form-label">
+							Fecha de publicación
+						</label>
+						<input id="fecha" name="fecha" type="date" [ngModel]="fecha()"
+							(ngModelChange)="fecha.set($event)"
+							class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 transition"
+							[class.border-slate-300]="!mostrarError(fecha())"
+							[class.focus:ring-blue-400]="!mostrarError(fecha())"
+							[class.border-red-500]="mostrarError(fecha())"
+							[class.focus:ring-red-400]="mostrarError(fecha())"
+							[class.bg-red-50]="mostrarError(fecha())" />
+							<app-mensaje-error [mensaje]="'La fecha de publicación es obligatoria.'" [mostrar]="mostrarError(fecha())" />
+					</div>
+
+					<button type="submit"
+						class="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2.5 px-4 rounded-lg transition shadow-sm">
+						Publicar noticia
+					</button>
+				</form>
+			</section>
+
+			<!-- ÁREA 2: LISTADO DE NOTICIAS -->
+			<section>
+				<h2 class="text-2xl font-semibold text-slate-700 mb-6">
+					Listado de noticias
+					<span class="text-sm font-normal text-slate-400"> ({{ noticias().length }}) </span>
+				</h2>
+
+				@if (noticias().length === 0) {
+				<div class="bg-white rounded-2xl shadow-md p-8 text-center text-slate-400">
+					Aún no hay noticias publicadas.
+				</div>
+				}
+
+				<div class="space-y-6">
+					@for (noticia of noticias(); track noticia.id) {
+					<article class="bg-white rounded-2xl shadow-md overflow-hidden hover:shadow-lg transition">
+						<img [src]="noticia.imagen" [alt]="noticia.titulo" class="w-full h-48 object-cover" />
+						<div class="p-5">
+							<div class="flex items-center justify-between mb-2">
+								<h3 class="text-xl font-bold text-slate-800">
+									{{ noticia.titulo }}
+								</h3>
+								<span class="text-xs font-medium text-slate-500 bg-slate-100 px-2 py-1 rounded-full">
+									{{ noticia.fecha }}
+								</span>
+							</div>
+							<p class="text-slate-600 leading-relaxed">
+								{{ noticia.texto }}
+							</p>
+						</div>
+					</article>
+					}
+				</div>
+			</section>
+		</div>
+	</div>
+</section>
